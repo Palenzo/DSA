@@ -1,0 +1,4 @@
+difference b/w iostream and bits/stdc++.h
+iostream: This is a standard C++ header file that provides input and output functionality. It includes the declarations for the standard stream objects such as cin, cout, cerr, and clog, which are used for reading input from the user and printing output to the console. It also includes other necessary declarations for input/output operations, such as file handling.
+
+bits/stdc++.h: This is not a standard C++ header file, but rather a non-standard header file that is commonly used by some compilers, including the GNU Compiler Collection (GCC). It is not part of the C++ standard library and is not guaranteed to be available on all compilers or platforms.
