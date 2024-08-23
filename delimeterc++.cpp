@@ -4,32 +4,33 @@
 
 using namespace std;
 
-std::vector<std::string> split(const std::string& str, const std::string& delimiters) {
-    std::vector<std::string> tokens;
-    std::string::size_type lastPos = 0;
-    std::string::size_type pos = str.find_first_of(delimiters, lastPos);
+vector<string> split(const string& str, const string& delimiters) {
+    vector<string> tokens;
+    string::size_type lastPos = 0;
+    string::size_type pos = str.find_first_of(delimiters, lastPos);
+    const string::size_type len = str.length();
 
-    while (pos != std::string::npos) {
+    while (pos != string::npos) {
         tokens.push_back(str.substr(lastPos, pos - lastPos));
         lastPos = pos + 1;
         pos = str.find_first_of(delimiters, lastPos);
     }
 
-    if (lastPos < str.length()) {
-        tokens.push_back(str.substr(lastPos, str.length() - lastPos));
+    if (lastPos < len) {
+        tokens.push_back(str.substr(lastPos, len - lastPos));
     }
 
     return tokens;
 }
 
 int main() {
-    std::string str = "Hello, world! How are you?";
-    std::string delimiters = ", !";
+    string str = "Hello, world! How are you?";
+    string delimiters = ", !";
 
-    std::vector<std::string> tokens = split(str, delimiters);
+    vector<string> tokens = split(str, delimiters);
 
-    for (const std::string& token : tokens) {
-        std::cout << token << std::endl;
+    for (const string& token : tokens) {
+        cout << token << endl;
     }
 
     return 0;
