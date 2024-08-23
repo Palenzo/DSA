@@ -3,3 +3,4 @@ iostream: This is a standard C++ header file that provides input and output func
 
 bits/stdc++.h: This is not a standard C++ header file, but rather a non-standard header file that is commonly used by some compilers, including the GNU Compiler Collection (GCC). It is not part of the C++ standard library and is not guaranteed to be available on all compilers or platforms.
 2) for a full line entry we don't use cin>>s; we use getline(cin,s);
+3) if we are having an if statement it's not mandatory to have an else statement
