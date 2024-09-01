@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Animation with Button</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #animation-container {
+            width: 400px;
+            height: 400px;
+            border: 2px solid #3498db;
+            position: relative;
+            overflow: hidden;
+        }
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #startButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #startButton:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="animation-container">
+            <div id="box"></div>
+        </div>
+        <button id="startButton">Start Animation</button>
+    </div>
+
+    <script>
+        const box = document.getElementById('box');
+        const startButton = document.getElementById('startButton');
+        let animationId;
+        let directionX = 1;
+        let directionY = 1;
+
+        function animate() {
+            const boxRect = box.getBoundingClientRect();
+            const containerRect = box.parentElement.getBoundingClientRect();
+
+            // Check for collision with container edges
+            if (boxRect.right >= containerRect.right || boxRect.left <= containerRect.left) {
+                directionX *= -1;
+            }
+            if (boxRect.bottom >= containerRect.bottom || boxRect.top <= containerRect.top) {
+                directionY *= -1;
+            }
+
+            // Move the box
+            box.style.left = box.offsetLeft + directionX + 'px';
+            box.style.top = box.offsetTop + directionY + 'px';
+
+            // Continue animation
+            animationId = requestAnimationFrame(animate);
+        }
+
+        startButton.addEventListener('click', () => {
+            startButton.disabled = true;  // Disable the button after clicking
+            animate();  // Start the animation
+        });
+    </script>
+</body>
+</html>
